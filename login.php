@@ -55,7 +55,7 @@
         <h2>Hey tú, ingresa a tu administrador</h2>
         <form action="process_login.php" method="POST">
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com" required>
+                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="" required>
                 <label for="floatingInput">Correo</label>
             </div>
             <div class="form-floating mb-3">

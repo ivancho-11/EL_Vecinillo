@@ -54,15 +54,50 @@ function actualizarPrecio($id, $precio) {
     $stmt->close();
 }
 
+// Función para insertar un nuevo producto
+function insertarProducto($nombre, $precio) {
+    global $conn;
+
+    $sql = "INSERT INTO productos (nombre, precio) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+
+    if (!$stmt) {
+        die("Error al preparar la consulta: " . $conn->error);
+    }
+
+    $stmt->bind_param("sd", $nombre, $precio);
+
+    if ($stmt->execute()) {
+        echo "<p>Producto añadido correctamente.</p>";
+    } else {
+        echo "<p>Error al añadir el producto: " . $stmt->error . "</p>";
+    }
+
+    $stmt->close();
+}
+
 // Lógica para actualizar el precio de un producto
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = intval($_POST['id']);
-    $precio = floatval($_POST['precio']);
+    if (isset($_POST['nuevo_producto'])) {
+        // Añadir nuevo producto
+        $nombre = $_POST['nombre'];
+        $precio = floatval($_POST['precio']);
 
-    if ($id > 0 && $precio >= 0) {
-        actualizarPrecio($id, $precio);
+        if (!empty($nombre) && $precio > 0) {
+            insertarProducto($nombre, $precio);
+        } else {
+            echo "<p>Por favor, ingresa un nombre válido y un precio mayor a 0.</p>";
+        }
     } else {
-        echo "<p>Datos inválidos.</p>";
+        // Actualizar precio de producto
+        $id = intval($_POST['id']);
+        $precio = floatval($_POST['precio']);
+
+        if ($id > 0 && $precio >= 0) {
+            actualizarPrecio($id, $precio);
+        } else {
+            echo "<p>Datos inválidos.</p>";
+        }
     }
 }
 
@@ -99,42 +134,47 @@ $productos = obtenerProductos();
             margin-top: 0; /* Eliminar margen superior del título */
         }
 
+        h3 {
+            text-align: center;
+        }
+
         table {
-            width: 100%; /* Tabla ocupa el 100% del ancho */
-            border-collapse: collapse; /* Colapsar bordes */
-            margin-top: 20px; /* Espacio superior de la tabla */
-        }
+    width: 100%; /* La tabla sigue ocupando el 100% del ancho */
+    border-collapse: collapse;
+    margin-top: 20px;
+    table-layout: fixed; /* Permite definir anchos específicos para las columnas */
+}
 
-        th, td {
-            padding: 15px; /* Espaciado interno en celdas */
-            text-align: left; /* Alinear texto a la izquierda */
-            border-bottom: 1px solid #ddd; /* Línea inferior de las celdas */
-        }
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden; /* Oculta el desbordamiento de texto */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el texto es muy largo */
+}
 
-        th {
-            background-color: #333; /* Fondo oscuro para encabezados */
-            color: white; /* Texto blanco en encabezados */
-        }
+th {
+    background-color: #333;
+    color: white;
+}
 
-        tr:hover {
-            background-color: #f1f1f1; /* Color de fondo al pasar el mouse sobre las filas */
-        }
+td:nth-child(2) {
+    width: 40%; /* Ancho fijo para la columna de nombre */
+}
 
-        input[type="text"] {
-            width: 80%; /* Ancho del campo de texto */
-            padding: 10px; /* Espaciado interno del campo de texto */
-            border-radius: 5px; /* Bordes redondeados */
-            border: 1px solid #ccc; /* Borde gris claro */
-        }
+td:nth-child(3) {
+    width: 20%; /* Ancho fijo para la columna de precio */
+}
 
-        input[type="submit"] {
-            padding: 10px 15px; /* Espaciado interno del botón */
-            background-color: #28a745; /* Color verde para el botón */
-            color: white; /* Texto blanco en el botón */
-            border: none; /* Sin borde */
-            border-radius: 5px; /* Bordes redondeados */
-            cursor: pointer; /* Cambiar cursor al pasar sobre el botón */
-        }
+input[type="text"] {
+    width: 100%; /* El campo de texto ocupa todo el espacio disponible */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box; /* Incluye el padding dentro del ancho del input */
+}
+
 
         input[type="submit"]:hover {
             background-color: #218838; /* Color más oscuro al pasar el mouse sobre el botón */
@@ -159,6 +199,18 @@ $productos = obtenerProductos();
         <h2>Panel de Administración - Vecinillo</h2>
     </div>
 
+    <!-- Formulario para añadir nuevos productos -->
+    <h3>Añadir nuevo producto</h3>
+    <form method="POST">
+        <label for="nombre">Nombre del producto:</label>
+        <input type="text" name="nombre" id="nombre" required>
+        <label for="precio">Precio:</label>
+        <input type="number" step="0.01" name="precio" id="precio" required>
+        <input type="hidden" name="nuevo_producto" value="1">
+        <input type="submit" value="Añadir Producto">
+    </form>
+
+    <!-- Tabla para mostrar y actualizar productos existentes -->
     <table>
         <tr>
             <th>ID</th>
@@ -174,7 +226,7 @@ $productos = obtenerProductos();
             <td>
                 <form method="POST">
                     <input type="hidden" name="id" value="<?php echo htmlspecialchars($producto['id']); ?>">
-                    <input type="text" name="precio" value="<?php echo htmlspecialchars($producto['precio']); ?>" required>
+                    <input type="number" step="0.01" name="precio" value="<?php echo htmlspecialchars($producto['precio']); ?>" required>
                     <input type="submit" value="Actualizar">
                 </form>
             </td>

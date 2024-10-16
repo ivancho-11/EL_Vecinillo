@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $servername = "127.0.0.1";
     $username = "LINA";        // Usar 'LINA' en lugar de 'root'
     $password_db = "1234";     // Contraseña de 'LINA'
-    $dbname = "ADMINISTRACION";
+    $dbname = "ADMINISTRACION"; // Asegúrate de que este nombre sea correcto
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password_db, $dbname);
@@ -23,9 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Consulta para verificar usuario
     $sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
     $stmt = $conn->prepare($sql);
+
     if (!$stmt) {
         die("Error en la preparación de la consulta: " . $conn->error);
     }
+
     $stmt->bind_param("ss", $email, $password);
     $stmt->execute();
     $result = $stmt->get_result();

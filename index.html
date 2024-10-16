@@ -69,8 +69,10 @@
                                     que te puedas imaginar. ¡Te va a dejar con ganas de más!
                                 </p>
                                 <div class="botones">
-                                    <a href="#" class="btn-1">comprar</a>
+                                    <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Comprar,</a>
+
                                     <a href="#" class="btn-1">menu</a>
+                                    
                                 </div>
                             </div>
                             <div class="slider-img">
@@ -92,6 +94,23 @@
                             </div>
                             <div class="slider-img">
                                 <img src="images/perro caliente .jpg" alt="Perros calientes">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slider">
+                            <div class="slider-txt">
+                                <h1>Arepas</h1>
+                                <p>
+                                    Arepas de queso"¡Esta arepa de queso está pa’ chuparse los dedos! Suave y derretidita por dentro, con el quesito que se te sale al primer mordisco."
+                                </p>
+                                <div class="botones">
+                                    <a href="#" class="btn-1">comprar</a>
+                                    <a href="#" class="btn-1">menu</a>
+                                </div>
+                            </div>
+                            <div class="slider-img">
+                                <img src="images/arepas.jpg" alt="Arepas">
                             </div>
                         </div>
                     </div>
@@ -394,6 +413,15 @@
             </div>
             <div class="txt">
                 <h4>Teléfono</h4>
+                <a href="#" id="whatsapp-enlace">WhatsApp Link</a>
+
+<script>
+document.getElementById('whatsapp-enlace').addEventListener('click', function(event) {
+    event.preventDefault();
+    mostrarMenu(event);  // Llama a la función para mostrar el menú
+});
+</script>
+
                 <p>3102993458</p>
             </div>
             <div class="txt">
