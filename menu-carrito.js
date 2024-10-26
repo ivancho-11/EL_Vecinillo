@@ -1,4 +1,4 @@
-// Estilos CSS (puedes ponerlo en un archivo separado si prefieres)
+// Estilos CSS //
 const styles = `
 body {
   background-color: #080202;
@@ -125,6 +125,8 @@ styleSheet.innerText = styles;
 
 document.head.appendChild(styleSheet);
 
+
+
 // Crear elementos del menú y carrito
 const popupMenu = document.createElement('div');
 popupMenu.id = 'popup-menu';
@@ -184,6 +186,8 @@ function cargarProductos() {
 
 function agregarAlCarrito(id) {
     const producto = productos.find(p => p.id == id);
+
+
     
     if (producto) { // Verifica si el producto existe
         carritoItems.push(producto);
@@ -214,7 +218,9 @@ actualizarCarrito();
 }
 
 // Esperar a que el DOM esté completamente cargado
+
 document.addEventListener('DOMContentLoaded', function() {
+
 // Buscar el enlace del menú
 const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
 
@@ -229,6 +235,7 @@ const comprarLink = Array.from(document.querySelectorAll('.btn-1')).find(el => e
 if (comprarLink) {
 comprarLink.addEventListener('click', function(event) {
 event.preventDefault();
+
 // Aquí puedes agregar la lógica para el proceso de compra
 console.log('Iniciar proceso de compra');
 });

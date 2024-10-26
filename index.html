@@ -8,6 +8,7 @@
     <link rel="icon" href="images/el vecinillo.png" type="imagenes">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="carrito.css">
 </head>
 
 <body>
@@ -68,12 +69,11 @@
                                     frescos y todas las salsas 
                                     que te puedas imaginar. ¡Te va a dejar con ganas de más!
                                 </p>
-                                <div class="botones">
-                                    <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Comprar,</a>
-
-                                    <a href="#" class="btn-1">menu</a>
-                                    
-                                </div>
+                                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+                             <div class="botones">
+                          <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+                          <a href="images/ivan.jpg" class="btn-1">Menu</a>
+                            </div>
                             </div>
                             <div class="slider-img">
                                 <img src="images/Hamburguesa vista frontal con papas fritas | Foto Premium.jpg" alt="Hamburguesa">
@@ -88,9 +88,9 @@
                                     Perros calientes "¡El perro caliente que te va a enamorar! Cargado de sabor y con todas las salsas que quieras. ¡Pa' los que saben disfrutar!"
                                 </p>
                                 <div class="botones">
-                                    <a href="#" class="btn-1">comprar</a>
-                                    <a href="#" class="btn-1">menu</a>
-                                </div>
+                                    <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+                                    <a href="images/ivan" class="btn-1">Menu</a>
+                                      </div>
                             </div>
                             <div class="slider-img">
                                 <img src="images/perro caliente .jpg" alt="Perros calientes">
@@ -105,9 +105,9 @@
                                     Arepas de queso"¡Esta arepa de queso está pa’ chuparse los dedos! Suave y derretidita por dentro, con el quesito que se te sale al primer mordisco."
                                 </p>
                                 <div class="botones">
-                                    <a href="#" class="btn-1">comprar</a>
-                                    <a href="#" class="btn-1">menu</a>
-                                </div>
+                                    <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+                                    <a href="images/ivan" class="btn-1">Menu</a>
+                                      </div>
                             </div>
                             <div class="slider-img">
                                 <img src="images/arepas.jpg" alt="Arepas">
@@ -122,9 +122,9 @@
                                     Salchipapa con pollo y carne, queso, huevo de codorniz "¿Te provoca algo de lujo? ¡Salchipapas con pollo, carne, queso y su huevo de codorniz! Una bomba de sabor que no te querrás perder."
                                 </p>
                                 <div class="botones">
-                                    <a href="#" class="btn-1">comprar</a>
-                                    <a href="#" class="btn-1">menu</a>
-                                </div>
+                                    <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+                                    <a href="images/ivan" class="btn-1">Menu</a>
+                                      </div>
                             </div>
                             <div class="slider-img">
                                 <img src="images/Salchipapa típica de América Latina_ Salchichas con papas fritas, salsa de tomate, mostaza y mayonesa en sartén de hierro y fondo negro Vista superior Espacio de copia | Foto Premium.jpg" alt="Salchipapa">
@@ -306,7 +306,7 @@
   <label for="tab3">Date gusto</label>
   <div class="tab">
 
-      <div class="swiper mySwiper-3" id="swiper2">
+      <div class="swiper mySwiper-3" id="swiper3">
           <div class="swiper-wrapper">
               <div class="swiper-slide">
                   <div class="product">
@@ -384,10 +384,10 @@
 
     <section class="swiper mySwiper-2" id="swiper2">
         <div class="info-img">
-          <img src="images/info.png" alt="info">
+          <img src="images/info.jpg" alt="esto es una arepa rellena de queso y carne ">
         </div>
         <div class="info-txt">
-          <h2>Tus gustos en un solo lugar</h2>
+          <h1>Tus gustos en un solo lugar</h1>
           <p>
             ¿Antojado de algo más? Prueba nuestras hamburguesas, preparadas con los mejores ingredientes. ¡Acompañadas de nuestras gaseosas 
             Postobón o Coca-Cola, serán el combo perfecto! 🍔
@@ -395,7 +395,13 @@
           <a href="#" class="btn-2">Más información</a>
         </div>
       </section>
-      
+      <section class="galeria-acordeon">
+        <img src="images/food1.png" alt="Comida 1">
+        <img src="images/food8.png" alt="Comida 2">
+        <img src="images/salchipapas.jpg" alt="Comida 3">
+        <img src="images/perro caliente .jpg" alt="Comida 4">
+        <img src="images/arepas.jpg" alt="Comida 5">
+    </section>
 
  <section class="Horario">
     <div class="horario-info-container">
@@ -413,15 +419,19 @@
             </div>
             <div class="txt">
                 <h4>Teléfono</h4>
-                <a href="#" id="whatsapp-enlace">WhatsApp Link</a>
-
-<script>
-document.getElementById('whatsapp-enlace').addEventListener('click', function(event) {
-    event.preventDefault();
-    mostrarMenu(event);  // Llama a la función para mostrar el menú
-});
-</script>
-
+                <a href="#" id="whatsapp-enlace">
+                    <img src="images/ivan.jpg" alt="WhatsApp" style="width: 24px; height: 24px; vertical-align: middle;">
+                    "¿Tienes Hambre? ¡Pide Aquí por WhatsApp y Comida al Momento! 📱🍴"
+                </a>
+            
+                <script>
+                    document.getElementById('whatsapp-enlace').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        mostrarMenu(event);  // Llama a la función para mostrar el menú
+                    });
+                </script>
+                  <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+            
                 <p>3102993458</p>
             </div>
             <div class="txt">
@@ -479,10 +489,10 @@ document.getElementById('whatsapp-enlace').addEventListener('click', function(ev
     </div>
 
     <div class="link">
-        <h4> INFORMAICION </h4>
+        <h4>INFORMACION</h4>
         <ul>
-            <li><a href="#"> Testimonios</a></li>
-            <li><a href="#"> Salsas</a></li>
+            <li><a href="Testimonios.php">Testimonios</a></li>
+            <li><a href="#">Salsas</a></li>
             <li><a href="panel_admin.php">ADMINISTRACION</a></li>
         </ul>
     </div>
@@ -515,6 +525,8 @@ document.getElementById('whatsapp-enlace').addEventListener('click', function(ev
     <script src="menu-carrito.js"></script>
 
     <script src="java.js"></script>
+
+ 
 </body>
 
 </html>

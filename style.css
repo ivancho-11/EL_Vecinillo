@@ -25,7 +25,7 @@ body {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: #db241b;
+  color: #c0ef40;
 }
 
 .swiper-pagination-bullet {
@@ -33,7 +33,7 @@ body {
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #f40d0d;
+  background-color: #caf40d;
 }
 
 .menu {
@@ -73,7 +73,7 @@ body {
   margin: 0 10px;
   height: 40px;
   width: 40px;
-  border: 1px solid #db241b;
+  border: 1px solid #dbd81b;;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -81,7 +81,7 @@ body {
 }
 
 .social:hover {
-  background-color: #ee1411;
+  background-color: yellow;
 }
 
 .social img {
@@ -103,7 +103,7 @@ body {
 }
 
 .menu .navbar ul li a:hover {
-  color: #db241b;
+  color: yellow;
 }
 
 #menu {
@@ -154,7 +154,7 @@ body {
 .btn-1 {
   display: inline-block;
   padding: 15px 35px;
-  border: 2px solid #db241b;
+  border: 2px solid #dbd81b;
   color: #ffffff;
   font-weight: 800;
   letter-spacing: 2px;
@@ -165,7 +165,7 @@ body {
 }
 
 .btn-1:hover {
-  background-color: #db241b;
+  background-color: #dbd81b;
   color: #ffffff;
 }
 
@@ -181,7 +181,7 @@ body {
 }
 
 .products {
-  background-color: #0d0d0d;
+  background-color: rgb(30, 1, 1);
   padding: 100px 0;
 }
 
@@ -215,7 +215,7 @@ body {
 }
 
 .tabs input[type="radio"]:checked + label {
-  border-bottom: 2px solid #db241b;
+  border-bottom: 2px solid #dbd81b;;
   color: #ffffff;
 }
 
@@ -281,6 +281,44 @@ body {
   font-size: 18px;
   font-weight: 800;
 }
+/* Opción 1: Usando Flexbox (recomendada) */
+.mySwiper-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; /* Espacio entre elementos */
+  padding: 2rem;
+  max-width: 1200px; /* O el ancho máximo que prefieras */
+  margin: 0 auto;
+}
+
+.info-img {
+  flex: 1; /* Toma una parte del espacio disponible */
+  text-align: center;
+}
+
+.info-img img {
+  max-width: 100%;
+  height: auto;
+}
+
+.info-txt {
+  flex: 1;
+  padding: 1rem;
+}
+
+/* Opción 2: Usando Grid */
+.mySwiper-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  place-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Estilos responsivos */
 
 .info {
   padding: 100px 0;
@@ -314,7 +352,7 @@ body {
 .btn-2 {
   display: inline-block;
   padding: 15px 35px;
-  background-color: #db241b;
+  background-color: #dbd81b;
   color: #ffffff;
   font-weight: 800;
   text-transform: uppercase;
@@ -382,7 +420,7 @@ body {
 }
 
 .link ul li a:hover {
-  color: #db241b;
+  color: #dbd81b;
 }
 
 @media (max-width: 991px) {
@@ -504,5 +542,90 @@ body {
 
   .footer {
     flex-direction: column;
+  }
+}
+@media (max-width: 768px) {
+  .mySwiper-2 {
+      grid-template-columns: 1fr; /* Cambia a una columna en móviles */
+      text-align: center;
+  }
+}
+
+/* Estilos adicionales para mejorar la apariencia */
+.info-txt h2 {
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.info-txt p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.btn-2 {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #3498db; /* Color azul */
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-2:hover {
+  background-color: #2980b9; /* Color azul más oscuro para el hover */
+}
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+ 
+.galeria-acordeon {
+  display: flex;
+  width: 100%;
+  max-width: 900px; /* Más ancho para mejor visualización */
+  height: 400px;
+  margin: 20px auto; /* Centra la galería */
+  gap: 4px; /* Espacio entre imágenes */
+}
+
+.galeria-acordeon img {
+  width: 60px; /* Ancho mínimo inicial */
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: all 0.5s ease;
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.galeria-acordeon img:hover {
+  cursor: crosshair;
+  width: 300px;
+  opacity: 1;
+  filter: contrast(120%) brightness(105%);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .galeria-acordeon {
+      height: 300px;
+  }
+
+  .galeria-acordeon img {
+      width: 40px;
+  }
+
+  .galeria-acordeon img:hover {
+      width: 200px;
   }
 }

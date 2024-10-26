@@ -1,43 +1,97 @@
-document.addEventListener('DOMContentLoaded', function () {
-  // Inicialización del slider principal
-  var swiper1 = new Swiper('.mySwiper-1', {
-      loop: true,
-      pagination: {
+document.addEventListener('DOMContentLoaded', initSliders);
+
+function initSliders() {
+  const sliderConfigs = [
+    {
+      selector: '.mySwiper-1',
+      options: {
+        loop: true,
+        pagination: {
           el: '.swiper-pagination',
           clickable: true,
-      },
-      navigation: {
+        },
+        navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
       },
-      autoplay: {
-          delay: 3000, // Tiempo en milisegundos entre cambios
-          disableOnInteraction: false, // Mantiene el autoplay tras la interacción
+    },
+    {
+      selector: '.mySwiper-2',
+      options: {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
       },
-  });
+    },
+    {
+      selector: '.mySwiper-3',
+      options: {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          },
+        },
+      },
+    },
+  ];
 
-  // Inicialización de los sliders en las pestañas
-  var swiper2 = new Swiper('.mySwiper-2', {
-      loop: true,
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-      autoplay: {
-          delay: 3000, // Tiempo en milisegundos entre cambios
-          disableOnInteraction: false, // Mantiene el autoplay tras la interacción
-      },
+  sliderConfigs.forEach((config) => {
+    initSwiper(config.selector, config.options);
   });
+}
 
-  var swiper3 = new Swiper('.mySwiper-3', {
-      loop: true,
-      navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-      },
-      autoplay: {
-          delay: 3000, // Tiempo en milisegundos entre cambios
-          disableOnInteraction: false, // Mantiene el autoplay tras la interacción
-      },
-  });
-});
+function initSwiper(selector, options) {
+  try {
+    const swiper = new Swiper(selector, options);
+    swiper.on('error', (error) => console.error(`Swiper ${selector} error:`, error));
+  } catch (error) {
+    console.error(`Error inicializando Swiper ${selector}:`, error);
+  }
+}
