@@ -1,12 +1,24 @@
+<?php
+
+if (isset($_GET['mensaje'])) {
+    if ($_GET['mensaje'] === 'success') {
+        echo '<div class="alert alert-success">¡Like registrado con éxito!</div>';
+    } elseif ($_GET['mensaje'] === 'error') {
+        echo '<div class="alert alert-danger">Ha ocurrido un error. Intenta nuevamente.</div>';
+    }
+}
+
+
+
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonios</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Favicon -->
     <link rel="icon" href="images/el-vecinillo.png" type="image/png">
     <style>
         body {
@@ -36,50 +48,11 @@
             font-size: 12px;
             color: #6c757d;
         }
-        <?php
-// Reemplaza esta sección en tu archivo Testimonios.php
-// ... (alrededor de la línea 90)
-
-// Configuración específica para XAMPP en Mac
-$servername = 'localhost:/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock';
-$username = 'root';
-$password = '';
-$dbname = 'ADMINISTRACION';
-
-try {
-    // Crear conexión
-    $conexion = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conexion->connect_error) {
-        throw new Exception("Error en la conexión: " . $conexion->connect_error);
-    }
-
-    // Consulta para obtener los comentarios
-    $sql = "SELECT nombre, comentario, fecha FROM testimonios ORDER BY fecha DESC";
-    $result = $conexion->query($sql);
-
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo '<div class="comentario">
-                    <h5>' . htmlspecialchars($row['nombre']) . '</h5>
-                    <p>' . htmlspecialchars($row['comentario']) . '</p>
-                    <time>' . htmlspecialchars($row['fecha']) . '</time>
-                  </div>';
-        }
-    } else {
-        echo '<p class="text-center">Aún no hay comentarios. Sé el primero en dejar uno.</p>';
-    }
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-} finally {
-    if (isset($conexion)) {
-        $conexion->close();
-    }
-}
-?>
     </style>
 </head>
 <body>
+<img class="logo-2" src="images/el vecinillo.png" alt="Logo alternativo">
+
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
@@ -123,41 +96,38 @@ try {
                     </div>
                 </div>
 
-                <!-- Sección de comentarios -->
                 <div class="comentarios">
-                    <h3 class="text-center mt-5">Comentarios recientes</h3>
-                    <?php
-                    // Conexión a la base de datos
-                    $conexion = new mysqli("localhost", "usuario", "contraseña", "nombre_base_datos");
+    <h3 class="text-center mt-5">Comentarios recientes</h3>
+    <?php
+    $pdo = conectarDB();
+    if (!$pdo) {
+        echo "No se pudo conectar a la base de datos.";
+        exit();
+    }
+    
+    try {
+        $sql = "SELECT id, nombre, comentario, fecha, likes FROM testimonios ORDER BY fecha DESC LIMIT 10";
+        $stmt = $pdo->query($sql);
 
-                    if ($conexion->connect_error) {
-                        die("Error en la conexión: " . $conexion->connect_error);
-                    }
-
-                    // Consulta para obtener los comentarios
-                    $sql = "SELECT nombre, comentario, fecha FROM testimonios ORDER BY fecha DESC";
-                    $result = $conexion->query($sql);
-
-                    if ($result->num_rows > 0) {
-                        while ($row = $result->fetch_assoc()) {
-                            echo '<div class="comentario">
-                                    <h5>' . htmlspecialchars($row['nombre']) . '</h5>
-                                    <p>' . htmlspecialchars($row['comentario']) . '</p>
-                                    <time>' . htmlspecialchars($row['fecha']) . '</time>
-                                  </div>';
-                        }
-                    } else {
-                        echo '<p class="text-center">Aún no hay comentarios. Sé el primero en dejar uno.</p>';
-                    }
-
-                    $conexion->close();
-                    ?>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bootstrap JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
+        if ($stmt && $stmt->rowCount() > 0) {
+            while ($row = $stmt->fetch()) {
+                echo '<div class="comentario">
+                        <h5>' . htmlspecialchars($row['nombre']) . '</h5>
+                        <p>' . htmlspecialchars($row['comentario']) . '</p>
+                        <time>' . date('d/m/Y H:i', strtotime($row['fecha'])) . '</time>
+                        <div class="d-flex justify-content-between mt-2">
+                            <form method="POST" action="dar_like.php" style="display:inline;">
+                                <input type="hidden" name="id" value="' . $row['id'] . '">
+                                <button type="submit" class="btn btn-link">👍 Like (' . $row['likes'] . ')</button>
+                            </form>
+                        </div>
+                      </div>';
+            }
+        } else {
+            echo '<p class="text-center">Aún no hay comentarios. ¡Sé el primero en dejar uno!</p>';
+        }
+    } catch (Exception $e) {
+        echo '<div class="alert alert-danger">Ha ocurrido un error al cargar los comentarios.</div>';
+    }
+    ?>
+</div>

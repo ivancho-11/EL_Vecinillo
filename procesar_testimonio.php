@@ -1,53 +1,31 @@
 <?php
-// Configuración específica para XAMPP en Mac
-$servername = 'localhost:/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock';
-$username = 'root';
-$password = '';
-$dbname = 'ADMINISTRACION';
+require_once 'config.php'; // Incluye el archivo de configuración
 
 try {
-    // Crear conexión
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verificar conexión
-    if ($conn->connect_error) {
-        throw new Exception("Error de conexión: " . $conn->connect_error);
+    $pdo = conectarDB(); // Llama a la función conectarDB desde config.php
+    
+    // Validar y limpiar datos de entrada
+    $nombre = filter_var($_POST['nombre'], FILTER_SANITIZE_STRING);
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $comentario = filter_var($_POST['comentario'], FILTER_SANITIZE_STRING);
+    
+    if (!$nombre || !$email || !$comentario) {
+        throw new Exception("Datos de formulario inválidos");
     }
-
-    // Verificar si se han enviado datos por POST
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener los datos del formulario
-        $nombre = $_POST['nombre'];
-        $email = $_POST['email'];
-        $comentario = $_POST['comentario'];
-        $fecha = date('Y-m-d H:i:s');
-
-        // Preparar la consulta SQL
-        $sql = "INSERT INTO testimonios (nombre, email, comentario, fecha) 
-                VALUES (?, ?, ?, ?)";
-        
-        // Preparar la sentencia
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssss", $nombre, $email, $comentario, $fecha);
-
-        // Ejecutar la consulta
-        if ($stmt->execute()) {
-            // Redirigir con mensaje de éxito
-            header("Location: Testimonios.php?mensaje=success");
-            exit();
-        } else {
-            // Redirigir con mensaje de error
-            header("Location: Testimonios.php?mensaje=error");
-            exit();
-        }
-
-        $stmt->close();
+    
+    // Preparar la consulta
+    $sql = "INSERT INTO testimonios (nombre, email, comentario, fecha) VALUES (?, ?, ?, NOW())";
+    $stmt = $pdo->prepare($sql);
+    
+    // Ejecutar la consulta
+    if ($stmt->execute([$nombre, $email, $comentario])) {
+        header("Location: Testimonios.php?mensaje=success");
+    } else {
+        throw new Exception("Error al insertar el comentario");
     }
+    
 } catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-} finally {
-    if (isset($conn)) {
-        $conn->close();
-    }
+    error_log($e->getMessage());
+    header("Location: Testimonios.php?mensaje=error");
+    exit();
 }
-?>
