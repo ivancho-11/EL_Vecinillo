@@ -16,8 +16,8 @@ require_once 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testimonios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <img class="logo-2" src="images/el vecinillo.png" alt="">
     
-    <link rel="icon" href="images/el-vecinillo.png" sizes="32x32" type="image/png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png" sizes="180x180">
     <style>
         body {
@@ -74,8 +74,7 @@ require_once 'config.php';
     </style>
 </head>
 <body>
-    <img class="logo-2" src="images/el-vecinillo.png" alt="Logo alternativo">
-
+    
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">

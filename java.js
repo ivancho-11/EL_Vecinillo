@@ -95,3 +95,30 @@ function initSwiper(selector, options) {
     console.error(`Error inicializando Swiper ${selector}:`, error);
   }
 }
+
+                    // Función para mostrar información
+                    function mostrarInfo(id) {
+                        document.getElementById(id).style.display = 'block';
+                    }
+                
+                    // Función para ocultar información
+                    function ocultarInfo(id) {
+                        document.getElementById(id).style.display = 'none';
+                    }
+                    function mostrarInfo(id) {
+                      ocultarTodo(); // Ocultar toda la info antes de mostrar la nueva
+                      document.getElementById(id).style.display = 'block';
+                  }
+              
+                  // Función para ocultar información
+                  function ocultarInfo(id) {
+                      document.getElementById(id).style.display = 'none';
+                  }
+              
+                  // Función para ocultar todas las secciones al mismo tiempo
+                  function ocultarTodo() {
+                      var infos = document.querySelectorAll('.info');
+                      infos.forEach(function(info) {
+                          info.style.display = 'none';
+                      });
+                  }

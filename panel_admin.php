@@ -33,6 +33,7 @@ function obtenerProductos() {
 }
 
 // Función para actualizar el precio de un producto
+
 function actualizarPrecio($id, $precio) {
     global $conn;
 
@@ -55,6 +56,7 @@ function actualizarPrecio($id, $precio) {
 }
 
 // Función para insertar un nuevo producto
+
 function insertarProducto($nombre, $precio) {
     global $conn;
 
@@ -77,6 +79,7 @@ function insertarProducto($nombre, $precio) {
 }
 
 // Lógica para actualizar el precio de un producto
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['nuevo_producto'])) {
         // Añadir nuevo producto

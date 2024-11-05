@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+// Verificar sesión
 if (!isset($_SESSION['user'])) {
     header('HTTP/1.0 403 Forbidden');
     echo json_encode(["error" => "No autorizado"]);
@@ -28,11 +30,18 @@ if (!$result) {
     die(json_encode(["error" => "Error en la consulta: " . $conn->error]));
 }
 
+// Obtener todos los productos
 $productos = $result->fetch_all(MYSQLI_ASSOC);
 
-// Devolver los productos en formato JSON
+// Verificar si hay productos
 header('Content-Type: application/json');
-echo json_encode($productos);
+if (empty($productos)) {
+    echo json_encode(["error" => "No hay productos disponibles"]);
+} else {
+    // Devolver los productos en formato JSON
+    echo json_encode($productos);
+}
 
+// Cerrar conexión
 $conn->close();
 ?>

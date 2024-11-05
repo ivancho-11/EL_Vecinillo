@@ -24,11 +24,27 @@
             <nav class="navbar">
                 <div class="menu-1">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Productos</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoInicio')" onmouseout="ocultarInfo('infoInicio')">Inicio</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoServicios')" onmouseout="ocultarInfo('infoServicios')">Servicios</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoProductos')" onmouseout="ocultarInfo('infoProductos')">Productos</a></li>
                     </ul>
                 </div>
+                
+                <!-- Información desplegable -->
+                <div id="infoInicio" class="info" style="display:none;">
+                    <p>Bienvenido a nuestro sitio web. Aquí encontrarás toda la información relevante acerca de nuestros servicios <li><a href="Testimonios.php">Testimonios</a></li>.</p>
+                </div>
+                
+                <div id="infoServicios" class="info" style="display:none;">
+                    <p>Ofrecemos una amplia gama de servicios diseñados para satisfacer tus necesidades</p>
+                </div>
+                
+                <div id="infoProductos" class="info" style="display:none;">
+                    <p>Explora nuestra selección de productos de alta calidad</p>
+                </div>
+                
+                
+                
 
                 <img class="logo-2" src="images/el vecinillo.png" alt="Logo alternativo">
                 <div class="menu-2">
@@ -37,11 +53,13 @@
                     </ul>
 
                     <div class="socials">
-                        <a href="#">
-                            <div class="social">
-                            <img src="images/s1.svg" alt="Red Social 1">
-                        </div>
+                        <a href="https://www.facebook.com/profile.php?id=61568273930955&is_tour_completed" target="_blank">
+                          <div class="social">
+                            <img src="images/s1.svg" alt="Facebook">
+                          </div>
                         </a>
+                      </div>
+                      
                         <a href="#">
                             <div class="social">
                             <img src="images/s2.svg" alt="Red Social 2">
@@ -70,10 +88,10 @@
                                     que te puedas imaginar. ¡Te va a dejar con ganas de más!
                                 </p>
                                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-                             <div class="botones">
-                          <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
-                          <a href="images/ivan.jpg" class="btn-1">Menu</a>
-                            </div>
+                                <div class="botones">
+                             <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
+                             <a href="#" class="btn-1">Menu</a>
+                               </div>
                             </div>
                             <div class="slider-img">
                                 <img src="images/Hamburguesa vista frontal con papas fritas | Foto Premium.jpg" alt="Hamburguesa">
@@ -89,7 +107,7 @@
                                 </p>
                                 <div class="botones">
                                     <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
-                                    <a href="images/ivan" class="btn-1">Menu</a>
+                                    <a href="#" class="btn-1">Menu</a>
                                       </div>
                             </div>
                             <div class="slider-img">
@@ -106,7 +124,7 @@
                                 </p>
                                 <div class="botones">
                                     <a href="https://api.whatsapp.com/send?phone=573144231163&text=Hola,%20quiero%20comprar%20este%20producto" class="btn-1">Compra aqui WhatsApp</a>
-                                    <a href="images/ivan" class="btn-1">Menu</a>
+                                     <a href="#" class="btn-1">Menu</a>
                                       </div>
                             </div>
                             <div class="slider-img">
@@ -522,7 +540,8 @@
  
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script src="menu-carrito.js"></script>
+    <script src="menu-carrito.js"></script> <!-- Cambia la ruta si es necesario -->
+
 
     <script src="java.js"></script>
 

@@ -158,7 +158,7 @@ h1 {
 
 /* ESTILOS PARA EL FOOTER */
 .footer {
-  background-color: #2c3e50; /* Agregado para mejorar el contraste */
+  background-color: #021324; /* Agregado para mejorar el contraste */
   padding: 100px 0;
   display: flex;
   justify-content: space-between;
@@ -181,6 +181,33 @@ h1 {
 .link ul li a:hover {
   color: #3498db; /* Cambiado a azul para mantener consistencia */
 }
+.galeria-acordeon {
+  display: flex;
+  width: 100%;
+  max-width: 900px;
+  height: 400px;
+  margin: 20px auto;
+  gap: 4px;
+}
+
+.galeria-acordeon img {
+  width: 100px; /* Aumenta el ancho inicial para evitar que se vean demasiado pequeñas */
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: all 0.5s ease;
+  border-radius: 8px;
+}
+
+.galeria-acordeon img:hover {
+  cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
+  width: 200px; /* Reduce el ancho en hover para que no se amplíe tanto */
+  opacity: 1;
+  filter: contrast(120%) brightness(105%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+
 
 /* ANIMACIONES */
 @keyframes fadeIn {

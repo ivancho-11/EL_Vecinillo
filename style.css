@@ -544,6 +544,7 @@ body {
     flex-direction: column;
   }
 }
+
 @media (max-width: 768px) {
   .mySwiper-2 {
       grid-template-columns: 1fr; /* Cambia a una columna en móviles */
