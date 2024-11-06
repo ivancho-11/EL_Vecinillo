@@ -122,3 +122,10 @@ function initSwiper(selector, options) {
                           info.style.display = 'none';
                       });
                   }
+                  // MENU EMERGENTE 
+                  function openMenu() {
+                    document.getElementById("modalOverlay").style.display = "flex";
+                }
+                function closeMenu() {
+                    document.getElementById("modalOverlay").style.display = "none";
+                  }
