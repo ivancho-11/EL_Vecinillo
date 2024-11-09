@@ -245,79 +245,140 @@ carrito.innerHTML = `
 
 document.body.appendChild(popupMenu);
 document.body.appendChild(carrito);
-
 let productos = [];
 let carritoItems = [];
 
-function mostrarMenu(event) {
-    event.preventDefault();
-    document.getElementById('popup-menu').style.display = 'block';
-    cargarProductos();
-}
+// Función para generar el mensaje de WhatsApp y abrir el enlace
 
-function cerrarMenu() {
-    document.getElementById('popup-menu').style.display = 'none';
-}
+document.getElementById('btn-pagar').addEventListener('click', function() {
 
-function cargarProductos() {
-    fetch('obtener_productos.php')
-        .then(response => response.json())
-        .then(data => {
-            if (data.error) {
-                console.error('Error:', data.error);
-                return;
-            }
-            productos = data;
+    // Generar el mensaje con los productos y el total
 
-            const lista = document.getElementById('lista-productos');
-            lista.innerHTML = '';
-            productos.forEach(producto => {
-                lista.innerHTML += `
-                    <li>
-                        <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
-                        ${producto.nombre} - $${producto.precio}
-                        <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
-                    </li>`;
-            });
-        })
-        .catch(error => console.error('Error:', error));
-}
+    let mensaje = 'Estas son tus Compras :\n';
+    carritoItems.forEach((item, index) => {
+        mensaje += `${index + 1}. ${item.nombre} - $${item.precio}\n`;
+    });
 
+    let total = carritoItems.reduce((acc, item) => acc + parseFloat(item.precio), 0).toFixed(2);
+    mensaje += `\nTotal: $${total}`;
+
+    // Generar el enlace de WhatsApp
+
+    const numeroTelefono = '573144231163'; 
+    const enlaceWhatsApp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
+
+    // Redirigir a WhatsApp
+    window.open(enlaceWhatsApp, '_blank');
+});
+
+// Funciones existentes para agregar productos y actualizar el carrito
 function agregarAlCarrito(id) {
-    const producto = productos.find(p => p.id == id);
-    if (producto) { // Verifica si el producto existe
-        carritoItems.push(producto);
-        actualizarCarrito();
-    }
+  const producto = productos.find(p => p.id == id);
+  if (producto) { // Verifica si el producto existe
+      carritoItems.push(producto);
+      actualizarCarrito();
+  }
 }
 
 function actualizarCarrito() {
-    const lista = document.getElementById('items-carrito');
-    lista.innerHTML = '';
-    let total = carritoItems.reduce((acc, item) => acc + parseFloat(item.precio), 0); // Sumar precios
+  const lista = document.getElementById('items-carrito');
+  lista.innerHTML = '';
+  let total = carritoItems.reduce((acc, item) => acc + parseFloat(item.precio), 0); // Sumar precios
 
-    carritoItems.forEach((item, index) => {
-        lista.innerHTML += `
-            <li>
-                ${item.nombre} - $${item.precio}
-                <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
-            </li>`;
-    });
+  carritoItems.forEach((item, index) => {
+      lista.innerHTML += `
+          <li>
+              ${item.nombre} - $${item.precio}
+              <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+          </li>`;
+  });
 
-    document.getElementById('total-carrito').textContent = total.toFixed(2);
+  document.getElementById('total-carrito').textContent = total.toFixed(2);
 }
 
 function eliminarDelCarrito(index) {
-    carritoItems.splice(index, 1); // Eliminar del carrito
-    actualizarCarrito();
+  carritoItems.splice(index, 1); // Eliminar del carrito
+  actualizarCarrito();
 }
 
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
-    // Buscar el enlace del menú
-    const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
+  // Buscar el enlace del menú
+  const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
 
-    if (menuLink) {
-        menuLink.addEventListener('click', mostrarMenu);
-    }
+  if (menuLink) {
+      menuLink.addEventListener('click', mostrarMenu);
+  }
+});
+function mostrarMenu(event) {
+  event.preventDefault();
+  document.getElementById('popup-menu').style.display = 'block';
+  cargarProductos();
+}
+
+function cerrarMenu() {
+  document.getElementById('popup-menu').style.display = 'none';
+}
+
+function cargarProductos() {
+  fetch('obtener_productos.php')
+      .then(response => response.json())
+      .then(data => {
+          if (data.error) {
+              console.error('Error:', data.error);
+              return;
+          }
+          productos = data;
+
+          const lista = document.getElementById('lista-productos');
+          lista.innerHTML = '';
+          productos.forEach(producto => {
+              lista.innerHTML += `
+                  <li>
+                      <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-imagen">
+                      ${producto.nombre} - $${producto.precio}
+                      <button onclick="agregarAlCarrito(${producto.id})">Agregar al carrito</button>
+                  </li>`;
+          });
+      })
+      .catch(error => console.error('Error:', error));
+}
+
+function agregarAlCarrito(id) {
+  const producto = productos.find(p => p.id == id);
+  if (producto) { // Verifica si el producto existe
+      carritoItems.push(producto);
+      actualizarCarrito();
+  }
+}
+
+function actualizarCarrito() {
+  const lista = document.getElementById('items-carrito');
+  lista.innerHTML = '';
+  let total = carritoItems.reduce((acc, item) => acc + parseFloat(item.precio), 0); // Sumar precios
+
+  carritoItems.forEach((item, index) => {
+      lista.innerHTML += `
+          <li>
+              ${item.nombre} - $${item.precio}
+              <button onclick="eliminarDelCarrito(${index})">Eliminar</button>
+          </li>`;
+  });
+
+  document.getElementById('total-carrito').textContent = total.toFixed(2);
+}
+
+function eliminarDelCarrito(index) {
+  carritoItems.splice(index, 1); // Eliminar del carrito
+  actualizarCarrito();
+}
+
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+  // Buscar el enlace del menú
+  const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
+
+  if (menuLink) {
+      menuLink.addEventListener('click', mostrarMenu);
+  }
 });

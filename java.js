@@ -129,3 +129,59 @@ function initSwiper(selector, options) {
                 function closeMenu() {
                     document.getElementById("modalOverlay").style.display = "none";
                   }
+                  // Datos de los productos
+const productos = [
+  { id: 1, nombre: "Gaseosas", precio: 3000 },
+  { id: 2, nombre: "Arepas rellenas", precio: 5000 },
+  { id: 3, nombre: "Arepas con queso", precio: 3000 },
+  { id: 4, nombre: "Arepas con chorizo", precio: 5000 },
+  { id: 5, nombre: "Arepa rellena", precio: 11000 },
+  { id: 6, nombre: "Papas rellenas", precio: 3000 },
+  { id: 7, nombre: "Chorizos", precio: 3000 },
+  { id: 8, nombre: "Hamburguesas", precio: 10000 },
+  { id: 9, nombre: "Perros", precio: 15000 },
+  { id: 10, nombre: "Flautas", precio: 20000 },
+  { id: 11, nombre: "Salchipapas", precio: 15000 },
+  { id: 12, nombre: "Gaseosa Coca Cola 1.5", precio: 7000 },
+  { id: 13, nombre: "Cuatro Personal", precio: 3000 },
+  { id: 14, nombre: "Coca Cola 2 litros", precio: 7000 },
+  { id: 15, nombre: "Hamburguesa de la casa", precio: 7500 },
+  { id: 16, nombre: "CocaCola 3,5", precio: 3000 }
+];
+
+// Función para inicializar el menú
+function inicializarMenu() {
+  const listaProductos = document.getElementById('lista-productos');
+  
+  productos.forEach(producto => {
+      const li = document.createElement('li');
+      li.className = 'producto-item';
+      li.innerHTML = `
+          <img src="/api/placeholder/100/100" alt="${producto.nombre}" class="producto-imagen">
+          <div class="producto-nombre">${producto.nombre}</div>
+          <div class="producto-precio">$${producto.precio.toLocaleString()}</div>
+          <button class="btn-agregar" onclick="agregarAlCarrito(${producto.id})">
+              Agregar al carrito
+          </button>
+      `;
+      listaProductos.appendChild(li);
+  });
+}
+
+// Función para agregar al carrito
+function agregarAlCarrito(id) {
+  const producto = productos.find(p => p.id === id);
+  if (producto) {
+      console.log(`Agregado al carrito: ${producto.nombre} - $${producto.precio}`);
+      // Aquí puedes implementar la lógica del carrito
+  }
+}
+
+// Función para cerrar el menú
+function cerrarMenu() {
+  const menu = document.getElementById('popup-menu');
+  menu.style.display = 'none';
+}
+
+// Inicializar el menú cuando cargue la página
+document.addEventListener('DOMContentLoaded', inicializarMenu);

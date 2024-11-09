@@ -7,31 +7,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: #000; /* Fondo negro */
-            color: #fff; /* Texto blanco */
+            background-color: #000; 
+            color: #fff; 
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh; /* Altura completa de la ventana */
-            font-family: 'Poppins', sans-serif; /* Fuente Poppins */
-            flex-direction: column; /* Colocar elementos en columna */
+            height: 100vh; 
+            font-family: 'Poppins', sans-serif; 
+            flex-direction: column; 
         }
 
         h2 {
-            margin-bottom: 20px; /* Espacio debajo del título */
+            margin-bottom: 20px; 
         }
 
         .logo-2 {
-            max-width: 150px; /* Ajusta el tamaño del logo */
-            margin-bottom: 20px; /* Espacio debajo del logo */
+            max-width: 150px; 
+            margin-bottom: 20px; 
         }
 
         .form-container {
-            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
-            padding: 30px; /* Espaciado interno */
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra del cuadro */
-            width: 300px; /* Ancho fijo del formulario */
+            background-color: rgba(255, 255, 255, 0.1); 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+            width: 300px; 
         }
 
         input[type="submit"] {

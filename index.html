@@ -160,83 +160,7 @@
     <main class="products">
         <div class="tabs container">
 
-            <input type="radio" name="tabs" id="tab1" checked="checked" class="tabinput" value="1">
-            <label for="tab1">Hamburguesa</label>
-            <div class="tab">
-
-                <div class="swiper mySwiper-2" id="swiper1">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="product">
-                                <div class="product-img">
-                                    <h4>Te provoca</h4>
-                                    <img src="images/food4.png" alt="Hamburguesa Especial">
-                                </div>
-                                <div class="product-txt">
-                                    <h4>Hamburguesa Especial</h4>
-                                    <p>La mejor hamburguesa con todos los ingredientes que amas.</p>
-                                    <span class="price">$8,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="product">
-                                <div class="product-img">
-                                    <h4>Se te antoja </h4>
-                                    <img src="images/food5.png" alt="Hamburguesa Especial">
-                                </div>
-                                <div class="product-txt">
-                                    <h4>Salchipapa</h4>
-                                    <p>La mejor hamburguesa con todos los ingredientes que amas.</p>
-                                    <span class="price">$8,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="product">
-                                <div class="product-img">
-                                    <h4>Pide lo que quieras</h4>
-                                    <img src="images/food6.png" alt="Hamburguesa Especial">
-                                </div>
-                                <div class="product-txt">
-                                    <h4>Hamburguesa Especial</h4>
-                                    <p>La mejor hamburguesa con todos los ingredientes que amas.</p>
-                                    <span class="price">$8,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="product">
-                                <div class="product-img">
-                                    <h4>Que tal esto</h4>
-                                    <img src="images/food4.png" alt="Hamburguesa Especial">
-                                </div>
-                                <div class="product-txt">
-                                    <h4>Hamburguesa Especial</h4>
-                                    <p>La mejor hamburguesa con todos los ingredientes que amas.</p>
-                                    <span class="price">$8,000</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="product">
-                                <div class="product-img">
-                                    <h4>Te provoca</h4>
-                                    <img src="images/food7.png" alt="Hamburguesa Especial">
-                                </div>
-                                <div class="product-txt">
-                                    <h4>Hamburguesa Especial</h4>
-                                    <p>La mejor hamburguesa con todos los ingredientes que amas.</p>
-                                    <span class="price">$8,000</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-            </div>
+            
 
   <!-- Inicio del proyecto página  label * 2    cambio de las modulos mobibles  cambio de imagenes -->
 
@@ -356,7 +280,7 @@
                   <div class="product">
                       <div class="product-img">
                           <h4>Pide lo que quieras</h4>
-                          <img src="images2/PAPAS2.PNG" alt="Hamburguesa Especial">
+                          <img src="images2/hambur.png" alt="Hamburguesa Especial">
                       </div>
                       <div class="product-txt">
                           <h4>Hamburguesa Especial</h4>
@@ -369,7 +293,7 @@
                   <div class="product">
                       <div class="product-img">
                           <h4>Que tal esto</h4>
-                          <img src="images/food4.png" alt="Hamburguesa Especial">
+                          <img src="images2/PAPAS2.PNG" alt="Hamburguesa Especial">
                       </div>
                       <div class="product-txt">
                           <h4>Hamburguesa Especial</h4>
@@ -382,7 +306,7 @@
                   <div class="product">
                       <div class="product-img">
                           <h4>Te provoca</h4>
-                          <img src="images/food5.png" alt="Hamburguesa Especial">
+                          <img src="images2/PAPAS.PNG" alt="Hamburguesa Especial">
                       </div>
                       <div class="product-txt">
                           <h4>Hamburguesa Especial</h4>
@@ -493,7 +417,7 @@
     <div class="link">
         <h4> GLOSARIO </h4>
         <ul>
-            <li><a href="#" onclick="openMenu()">Menú</a></li>
+            <li><a href="#" onclick="openMenu()">Menú</a></li>   <!-- est6os tiene mas informacion  -->    
 
 <!-- Ventana emergente para mostrar el PDF -->
 <div class="modal-overlay" id="modalOverlay">
@@ -558,7 +482,13 @@
 
     <script src="java.js"></script>
 
- 
+    <div id="popup-menu" class="popup-menu">
+        <h2>Menú de Productos</h2>
+        <ul class="producto-lista" id="lista-productos">
+            <!-- Los productos se generarán dinámicamente aquí -->
+        </ul>
+        <button class="btn-cerrar" onclick="cerrarMenu()">Cerrar</button>
+    </div>
 </body>
 
 </html>
