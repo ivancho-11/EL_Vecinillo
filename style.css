@@ -364,23 +364,70 @@ body {
   background-color: #ab1c15;
 }
 
+/* Sección de Horario */
 .Horario {
   padding: 100px 0;
   background-color: #0d0d0d;
-}
-
-.horario-info h2 {
-  font-size: 75px;
   color: #ffffff;
-  font-weight: 800;
-  text-transform: uppercase;
-  margin-bottom: 50px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
 }
 
+/* Estilo para el título */
+.horario-info h2 {
+  font-size: 60px; /* Ajusté el tamaño para que sea más flexible */
+  color: #ffffff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 3px; /* Añade espaciado entre letras para dar un efecto de impacto */
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1); /* Efecto translúcido detrás del texto */
+  border-radius: 8px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+/* Fondo decorativo con formas */
+.Horario::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -150px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05); /* Forma suave en el fondo */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.Horario::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  right: -150px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Texto del horario */
 .horario-txt {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  flex-wrap: wrap; /* Ajusta los elementos para pantallas pequeñas */
+  z-index: 2;
+  position: relative;
 }
+
+
+
 
 .txt {
   color: #ffffff;
@@ -422,8 +469,6 @@ body {
 .link ul li a:hover {
   color: #dbd81b;
 }
-
-
 
 @media (max-width: 991px) {
   .menu {

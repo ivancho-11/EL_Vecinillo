@@ -1,5 +1,5 @@
 <?php
-require_once 'config.php'; // Asegúrate de incluir tu archivo de configuración para la conexión a la base de datos
+require_once 'config.php'; // AsegúraR de incluir tu archivo de configuración para la conexión a la base de datos
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Verifica si el ID del testimonio se ha enviado

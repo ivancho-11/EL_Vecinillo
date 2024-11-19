@@ -12,7 +12,7 @@
 
 /* ESTILOS PARA EL BODY */
 body {
-  font-family: 'Poppins', sans-serif; /* Cambiado a 'Poppins' */
+  font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
   color: #2c3e50;
   line-height: 1.6;
@@ -47,15 +47,33 @@ h1 {
 }
 
 /* GALERÍA DE IMÁGENES */
-.img-fluid {
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
+.galeria-acordeon {
+  display: flex;
+  justify-content: center; /* Centra la galería horizontalmente */
+  width: 100%;
+  max-width: 900px;
+  height: 400px;
+  margin: 20px auto;
+  gap: 8px; /* Espaciado entre imágenes */
+  padding: 20px;
 }
 
-.img-fluid:hover {
-  transform: scale(1.02);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+.galeria-acordeon img {
+  width: 100px; /* Tamaño inicial de las imágenes */
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: 0.9;
+  transition: all 0.5s ease; /* Transición suave para el hover */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Añadido sombra ligera */
+}
+
+.galeria-acordeon img:hover {
+  cursor: pointer; /* Interacción visual con el cursor */
+  width: 200px; /* Aumenta el tamaño al pasar el mouse */
+  opacity: 1;
+  filter: contrast(120%) brightness(105%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
 }
 
 /* SECCIÓN DE OFERTAS DE EMPLEO */
@@ -104,32 +122,34 @@ h1 {
 .navbar {
   display: flex;
 }
+
 .product-txt {
-    width: 50%;
-    margin-left: 10px;
-    text-align: left;
-  }
-  
-  .product-txt h4 {
-    color: #ffffff;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 800;
-    margin-bottom: 5px;
-  }
-  
-  .product-txt p {
-    color: #A7A7A7;
-    font-size: 16px;
-    margin-bottom: 15px;
-    font-weight: 800;
-  }
-  
-  .product-txt span {
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 800;
-  }
+  width: 50%;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.product-txt h4 {
+  color: #ffffff;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 5px;
+}
+
+.product-txt p {
+  color: #A7A7A7;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+.product-txt span {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 800;
+}
+
 /* ESTILOS PARA LA SECCIÓN DE REDES SOCIALES */
 .socials {
   display: flex;
@@ -158,7 +178,7 @@ h1 {
 
 /* ESTILOS PARA EL FOOTER */
 .footer {
-  background-color: #021324; /* Agregado para mejorar el contraste */
+  background-color: #021324;
   padding: 100px 0;
   display: flex;
   justify-content: space-between;
@@ -179,34 +199,47 @@ h1 {
 }
 
 .link ul li a:hover {
-  color: #3498db; /* Cambiado a azul para mantener consistencia */
+  color: #3498db;
 }
+/* Contenedor de la galería */
 .galeria-acordeon {
   display: flex;
   width: 100%;
   max-width: 900px;
   height: 400px;
   margin: 20px auto;
-  gap: 4px;
+  overflow: hidden;
 }
 
-.galeria-acordeon img {
-  width: 100px; /* Aumenta el ancho inicial para evitar que se vean demasiado pequeñas */
-  flex-grow: 1;
+/* Cada ítem del acordeón */
+.acordeon-item {
+  flex: 1;
+  overflow: hidden;
+  transition: flex 0.3s ease;
+  position: relative;
+}
+
+/* Imágenes dentro del acordeón */
+.acordeon-item img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
   opacity: 0.8;
-  transition: all 0.5s ease;
   border-radius: 8px;
 }
 
-.galeria-acordeon img:hover {
-  cursor: pointer; /* Cambia el cursor a pointer para indicar interactividad */
-  width: 200px; /* Reduce el ancho en hover para que no se amplíe tanto */
+/* Efecto al pasar el mouse sobre el ítem */
+.acordeon-item:hover {
+  flex: 3;
+}
+
+.acordeon-item:hover img {
+  transform: scale(1.1);
   opacity: 1;
   filter: contrast(120%) brightness(105%);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
-
 
 
 /* ANIMACIONES */
@@ -242,6 +275,14 @@ h1 {
   .list-group-item {
     font-size: 0.9rem;
     padding: 0.75rem;
+  }
+
+  .galeria-acordeon img {
+    width: 80px; /* Tamaño más pequeño para pantallas pequeñas */
+  }
+
+  .galeria-acordeon img:hover {
+    width: 150px; /* Ajuste en hover para pantallas más pequeñas */
   }
 }
 

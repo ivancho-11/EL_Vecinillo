@@ -75,6 +75,8 @@ body {
     border: 2px solid #4a4a4a;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    z-index: 999; /* Mantiene el carrito en la parte superior */
+    width: 300px; /* Anchura estándar para pantallas más grandes */
 }
 
 #carrito h3 {
@@ -212,6 +214,46 @@ button:hover span {
 button:active {
   transform: scale(0.9);
 }
+  
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    #carrito {
+        width: 90%; /* El carrito ocupará el 90% del ancho de la pantalla */
+        top: auto;
+        bottom: 10px; /* Se coloca en la parte inferior */
+        right: 5%; /* Un poco de margen en los lados */
+        left: 5%; /* Centramos el carrito horizontalmente */
+        max-height: 50vh; /* Altura ajustada para evitar que ocupe demasiado espacio en móviles */
+    }
+
+    #items-carrito li {
+        flex-direction: column; /* Cambia el layout para que los botones queden debajo del texto en pantallas pequeñas */
+        text-align: center;
+    }
+
+    #items-carrito button {
+        width: 100%; /* Botón de eliminar toma el ancho completo en pantallas pequeñas */
+        margin-top: 5px;
+    }
+}
+
+/* Media query para pantallas muy pequeñas (móviles) */
+@media (max-width: 480px) {
+    #carrito {
+        padding: 15px; /* Reducción del padding en móviles más pequeños */
+        width: 95%; /* Ocupa casi todo el ancho */
+        right: 2.5%;
+        left: 2.5%;
+    }
+    
+    #items-carrito li {
+        padding: 8px; /* Espacio ajustado para caber mejor en móviles */
+    }
+
+    #total-carrito {
+        font-size: 1em; /* Ajustamos el tamaño del texto del total en pantallas pequeñas */
+    }
 `;
 
 // Agregar estilos al documento
@@ -264,7 +306,7 @@ document.getElementById('btn-pagar').addEventListener('click', function() {
 
     // Generar el enlace de WhatsApp
 
-    const numeroTelefono = '573144231163'; 
+    const numeroTelefono = '573142584256'; 
     const enlaceWhatsApp = `https://wa.me/${numeroTelefono}?text=${encodeURIComponent(mensaje)}`;
 
     // Redirigir a WhatsApp
@@ -302,7 +344,9 @@ function eliminarDelCarrito(index) {
 }
 
 // Esperar a que el DOM esté completamente cargado
+
 document.addEventListener('DOMContentLoaded', function() {
+  
   // Buscar el enlace del menú
   const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
 
@@ -374,7 +418,9 @@ function eliminarDelCarrito(index) {
 }
 
 // Esperar a que el DOM esté completamente cargado
+
 document.addEventListener('DOMContentLoaded', function() {
+
   // Buscar el enlace del menú
   const menuLink = Array.from(document.querySelectorAll('.btn-1')).find(el => el.textContent.trim().toLowerCase() === 'menu');
 

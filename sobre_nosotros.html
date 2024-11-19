@@ -20,28 +20,45 @@
             <nav class="navbar">
                 <div class="menu-1">
                     <ul>
-                        <li><a href="#">Inicio</a></li>
-                        <li><a href="#">Servicios</a></li>
-                        <li><a href="#">Productos</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoInicio')" onmouseout="ocultarInfo('infoInicio')">Inicio</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoServicios')" onmouseout="ocultarInfo('infoServicios')">Servicios</a></li>
+                        <li><a href="#" onmouseover="mostrarInfo('infoProductos')" onmouseout="ocultarInfo('infoProductos')">Productos</a></li>
                     </ul>
                 </div>
+                
+                <!-- Información desplegable -->
+                <div id="infoInicio" class="info" style="display:none;">
+                    <p>Bienvenido a nuestro sitio web. Aquí encontrarás toda la información relevante acerca de nuestros servicios <li><a href="Testimonios.php">Testimonios</a></li>.</p>
+                </div>
+                
+                <div id="infoServicios" class="info" style="display:none;">
+                    <p>Ofrecemos una amplia gama de servicios diseñados para satisfacer tus necesidades</p>
+                </div>
+                
+                <div id="infoProductos" class="info" style="display:none;">
+                    <p>Explora nuestra selección de productos de alta calidad</p>
+                </div>
+                
+                
+                
 
-                <img class="logo-2" src="images/el vecinillo.png" alt="Logo alternativ0000o">
-
+                <img class="logo-2" src="images/el vecinillo.png" alt="Logo alternativo">
                 <div class="menu-2">
                     <ul>
                         <li><a href="#">Horario</a></li>
                     </ul>
 
                     <div class="socials">
-                        <a href="#">
-                            <div class="social">
-                            <img src="images/s1.svg" alt="Red Social 1">
-                        </div>
+                        <a href="https://www.facebook.com/profile.php?id=61568273930955&is_tour_completed" target="_blank">
+                          <div class="social">
+                            <img src="images/s1.svg" alt="Facebook">
+                          </div>
                         </a>
+                      </div>
+                      
                         <a href="#">
                             <div class="social">
-                            <img src="images/s2.svg" alt="Red Social 2">
+                                <img src="images/x.png" alt="Red Social 2">
                         </div>
                         </a>
                         <div class="social">
@@ -79,22 +96,19 @@
         
 </nav>
 </div>
-    </section>
+  <!-- Galería de Imágenes - Efecto Acordeón -->
+<section class="galeria-acordeon">
+    <div class="acordeon-item">
+        <img src="images/FAMI.PNG" alt="Ambiente familiar" class="img-fluid">
+    </div>
+    <div class="acordeon-item">
+        <img src="images/local.png" alt="Nuestro local" class="img-fluid">
+    </div>
+    <div class="acordeon-item">
+        <img src="images/local2.png" alt="Interior del local" class="img-fluid">
+    </div>
+</section>
 
-    <!-- Galería de Imágenes -->
-    <section class="galeria-acordeon">
-        <div class="row g-3">
-            <div class="col-md-4">
-                <img src="images/FAMI.PNG" alt="Ambiente familiar" class="img-fluid rounded">
-            </div>
-            <div class="col-md-4">
-                <img src="images/local.png" alt="Nuestro local" class="img-fluid rounded">
-            </div>
-            <div class="col-md-4">
-                <img src="images/local2.png" alt="Interior del local" class="img-fluid rounded">
-            </div>
-        </div>
-    </section>
 
     <!-- Sección de Ofertas de Empleo -->
     <section class="container my-4 ofertas-empleo">

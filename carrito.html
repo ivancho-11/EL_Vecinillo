@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="styles2.css"> <!-- Archivo de estilos externo -->
+</head>
+<body>
+    <!-- Menú emergente -->
+    <div id="popup-menu">
+        <h2>Menú de Productos</h2>
+        <ul id="lista-productos"></ul>
+        <button onclick="cerrarMenu()">Cerrar</button>
+    </div>
+
+    <!-- Carrito de compras -->
+    <div id="carrito">
+        <h3>Carrito</h3>
+        <ul id="items-carrito"></ul>
+        <p>Total: $<span id="total-carrito">0</span></p>
+        <button class="Btn" id="btn-pagar">Pagar</button>
+    </div>
+
+    <script src="menu-carrito.js"></script> <!-- Archivo de JavaScript externo -->
+</body>
+</html>
