@@ -4,17 +4,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Configuración de la base de datos
-define('DB_HOST', 'localhost'); // Cambia esto si es necesario
-define('DB_USER', 'root'); // Usuario de la base de datos
-define('DB_PASS', ''); // Contraseña de la base de datos
-define('DB_NAME', 'ADMINISTRACION'); // Nombre de la base de datos
-define('DB_SOCKET', '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock'); // Ruta del socket
-
+define('DB_HOST', 'localhost'); 
+define('DB_USER', 'root'); 
+define('DB_PASS', ''); 
+define('DB_NAME', 'ADMINISTRACION'); 
+define('DB_SOCKET', '/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock');
 /**
  * Función para establecer la conexión a la base de datos
  *
  * @return PDO Objeto de conexión a la base de datos
- * @throws Exception Si hay un error en la conexión
+ * @throws Exception Si hay un error en la conexión  BLOQUE TRY CATCH 
  */
 function conectarDB() {
     try {

@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($testimonioId) {
         $pdo = conectarDB();
         
-        // Suponiendo que tienes una tabla 'likes' para registrar los likes
+        //  que tienes una tabla 'likes' para registrar los likes
         $stmt = $pdo->prepare("INSERT INTO likes (testimonio_id) VALUES (:testimonio_id)");
         $stmt->bindParam(':testimonio_id', $testimonioId);
         

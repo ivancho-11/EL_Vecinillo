@@ -35,16 +35,30 @@
         }
 
         input[type="submit"] {
-            background-color: #db241b; /* Color de fondo del botón */
-            color: #fff; /* Color del texto del botón */
-            border: none; /* Sin borde */
-            padding: 10px; /* Espaciado interno del botón */
-            border-radius: 5px; /* Bordes redondeados del botón */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+            background-color: #db241b;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         input[type="submit"]:hover {
-            background-color: #f40d0d; /* Color al pasar el mouse */
+            background-color: #f40d0d;
+        }
+
+        .form-container button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .form-container button:hover {
+            background-color: #218838;
         }
     </style>
 </head>
@@ -54,16 +68,21 @@
     <div class="form-container">
         <h2>Hey tú, ingresa a tu administrador</h2>
         <form action="process_login.php" method="POST">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" name="email" placeholder="" required>
-                <label for="floatingInput">Correo</label>
+            <div class="form-group mb-3">
+                <label for="email">Correo</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Correo" required>
             </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Contraseña" required>
-                <label for="floatingPassword">Contraseña</label>
+            <div class="form-group mb-3">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
             </div>
             <input type="submit" value="Iniciar sesión" class="btn btn-block">
         </form>
+
+        <!-- Botón para ir a la página de creación de usuario -->
+        <a href="crear_usuario.php">
+            <button type="button">Crear Usuario</button>
+        </a>
     </div>
 
     <!-- Bootstrap JS (opcional) -->

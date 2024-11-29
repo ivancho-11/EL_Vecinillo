@@ -3,14 +3,14 @@ session_start();
 
 // Obtener datos del formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $correo = $_POST['email'];  // Mantuve 'email' del formulario
+    $password = $_POST['password'];  // Contraseña ingresada
 
     // Conexión a la base de datos
     $servername = "127.0.0.1";
-    $username = "LINA";        // Usar 'LINA' en lugar de 'root'
-    $password_db = "1234";     // Contraseña de 'LINA'
-    $dbname = "ADMINISTRACION"; // Asegúrate de que este nombre sea correcto
+    $username = "LINA";        
+    $password_db = "1234";     
+    $dbname = "ADMINISTRACION"; 
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password_db, $dbname);
@@ -21,23 +21,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Consulta para verificar usuario
-    $sql = "SELECT * FROM usuarios WHERE email = ? AND password = ?";
+    $sql = "SELECT * FROM usuarios WHERE correo = ?";
     $stmt = $conn->prepare($sql);
 
     if (!$stmt) {
         die("Error en la preparación de la consulta: " . $conn->error);
     }
 
-    $stmt->bind_param("ss", $email, $password);
+    $stmt->bind_param("s", $correo);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        $_SESSION['user'] = $email;  // Guardar sesión del usuario
-        header("Location: panel_admin.php"); // Redirigir a la página admin
-        exit();
+        $usuario = $result->fetch_assoc();
+        
+        
+        
+        if ($password === $usuario['clave']) {
+            $_SESSION['user'] = $correo;
+            header("Location: panel_admin.php");
+            exit();
+        } else {
+            echo "Credenciales incorrectas.";
+        }
     } else {
-        echo "Credenciales incorrectas.";
+        echo "Usuario no encontrado.";
     }
 
     $stmt->close();
